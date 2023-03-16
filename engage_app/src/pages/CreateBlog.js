@@ -37,6 +37,7 @@ const CreateBlog = () => {
       if (data?.success) {
         toast.success("Blog Created");
         navigate("/my-blogs");
+        console.log(id);
       }
     } catch (error) {
       console.log(error);

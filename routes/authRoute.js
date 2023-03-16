@@ -5,6 +5,7 @@ import {
   testController,
   forgotPasswordController,
   updateProfileController,
+  getUserByIdController,
 } from "../controller/authController.js";
 import { requireSignIn } from "../middlewares/authMiddlewares.js";
 //router object

@@ -8,6 +8,7 @@ const BlogDetails = () => {
   const id = useParams().id;
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({});
+
   // get blog details
   const getBlogDetail = async () => {
     try {
