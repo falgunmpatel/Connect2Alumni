@@ -38,10 +38,17 @@ const Header = () => {
           >
             <span className="navbar-toggler-icon" />
           </button>
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <Link to="/" className="navbar-brand">
-              {" "}
-              Community Engage
+          <div
+            className="text-capitalize collapse navbar-collapse"
+            id="navbarTogglerDemo01"
+          >
+            <img
+              style={{ width: "5%", padding: "5px" }}
+              src="https://cdn-icons-png.flaticon.com/512/9888/9888728.png"
+              alt="logo.png"
+            />
+            <Link to="/" className="fs-2 navbar-brand">
+              &nbsp;Connect2Alumni
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
@@ -50,13 +57,8 @@ const Header = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/socialmedia" className="nav-link ">
+                <NavLink to="/all-blog" className="nav-link ">
                   Posts
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/team" className="nav-link">
-                  Team
                 </NavLink>
               </li>
               <li className="nav-item">
@@ -79,6 +81,20 @@ const Header = () => {
                 </>
               ) : (
                 <>
+                  <li>
+                    {/* <Button LinkComponent={Link} to="/create-blog"> */}
+                    <NavLink to="/create-blog" className="nav-link">
+                      Create Post
+                    </NavLink>
+                    {/* </Button> */}
+                  </li>
+                  <li>
+                    {/* <Button LinkComponent={Link} to="/my-blogs"> */}
+                    <NavLink to="/my-blogs" className="nav-link">
+                      My Posts
+                    </NavLink>
+                    {/* </Button> */}
+                  </li>
                   <li className="nav-item">
                     <NavLink to="/userprofile" className="nav-link">
                       My Profile

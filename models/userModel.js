@@ -55,6 +55,12 @@ const userSchema = new mongoose.Schema(
       required: true,
       default: NaN,
     },
+    blogs: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "blogs",
+      },
+    ],
   },
   { timestamps: true }
 );

@@ -3,8 +3,6 @@ import userModel from "../models/userModel.js";
 
 import JWT from "jsonwebtoken";
 
-const JWT_SECRET = "YYTDDDDTFDUYIOUOIYQWERY";
-
 export const registerController = async (req, res) => {
   try {
     const { name, email, password, answer } = req.body;
@@ -86,7 +84,7 @@ export const loginController = async (req, res) => {
     }
 
     //token
-    const token = await JWT.sign({ _id: user._id }, JWT_SECRET, {
+    const token = await JWT.sign({ _id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
 
@@ -94,6 +92,7 @@ export const loginController = async (req, res) => {
       success: true,
       message: "login successfully",
       user: {
+        _id: user._id,
         name: user.name,
         email: user.email,
         role: user.role,

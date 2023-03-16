@@ -47,7 +47,7 @@
 // export default App;
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import SocialMedia from "./pages/SociaMedia";
+import SocialMedia from "./pages/SocialMedia";
 import Contact from "./pages/Contact";
 import Policy from "./pages/Policy";
 import Pagenotfound from "./pages/Pagenotfound";
@@ -55,16 +55,22 @@ import Register from "./pages/Auth/Register";
 import Login from "./pages/Auth/Login";
 import UserProfile from "./pages/user/UserProfile";
 import ForgotPasssword from "./pages/Auth/ForgotPassword";
+import CreateBlog from "./pages/CreateBlog";
+import BlogDetails from "./pages/BlogDetails";
+import UserBlogs from "./pages/UserBlogs";
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/userprofile" element={<UserProfile />} />
+        <Route path="/create-blog" element={<CreateBlog />} />
+        <Route path="/all-blog" element={<SocialMedia />} />
+        <Route path="/my-blogs" element={<UserBlogs />} />
+        <Route path="/blog-details/:id" element={<BlogDetails />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgotpassword" element={<ForgotPasssword />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/socialmedia" element={<SocialMedia />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/policy" element={<Policy />} />
         <Route path="*" element={<Pagenotfound />} />

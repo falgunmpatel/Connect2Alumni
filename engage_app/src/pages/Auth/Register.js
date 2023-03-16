@@ -152,7 +152,7 @@ const Register = () => {
               <div>
                 <img
                   className="mb-4"
-                  src="https://cdn-icons-png.flaticon.com/512/3365/3365355.png"
+                  src="https://cdn-icons-png.flaticon.com/512/9888/9888728.png"
                   alt="pic"
                   width={100}
                   height={100}
