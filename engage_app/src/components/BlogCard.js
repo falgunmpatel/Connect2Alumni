@@ -1,5 +1,6 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
 import Avatar from "@mui/material/Avatar";
@@ -16,6 +17,7 @@ export default function BlogCard({
   description,
   time,
   id,
+  image,
   isUser,
   name,
 }) {
@@ -49,6 +51,8 @@ export default function BlogCard({
         margin: "auto",
         mt: 2,
         padding: 2,
+        maxWidth: 500,
+        minHeight: 300,
         boxShadow: "5px 5px 10px #ccc",
         ":hover:": {
           boxShadow: "10px 10px 20px #ccc",
@@ -78,6 +82,7 @@ export default function BlogCard({
         }
         subheader={<Typography level="body2">{time}</Typography>}
       />
+      <CardMedia component="img" height="300" image={image} alt="Post Image" />
       <CardContent>
         <Typography variant="h6" color="text.secondary">
           {title}

@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import BlogCard from "../components/BlogCard";
 import Layout from "../components/Layout/Layout";
+import { useAuth } from "../context/auth";
 
 const REACT_APP_API = "http://localhost:8080";
 const UserBlogs = () => {
+  const [auth, setAuth] = useAuth();
   const [blogs, setBlogs] = useState([]);
 
   //get user blogs
@@ -27,26 +29,25 @@ const UserBlogs = () => {
   }, []);
   console.log(blogs);
   return (
-    <>
-      <Layout>
-        <div>
-          {blogs && blogs.length > 0 ? (
-            blogs.map((blog) => (
-              <BlogCard
-                id={blog._id}
-                isUser={true}
-                title={blog.title}
-                description={blog.description}
-                name={blog.user.name}
-                time={blog.createdAt}
-              />
-            ))
-          ) : (
-            <h1>You Havent Created a blog</h1>
-          )}
-        </div>
-      </Layout>
-    </>
+    <Layout>
+      <div>
+        {blogs && blogs.length > 0 ? (
+          blogs.map((blog) => (
+            <BlogCard
+              id={blog._id}
+              isUser={true}
+              title={blog.title}
+              description={blog.description}
+              image={blog.image}
+              name={auth?.user?.name}
+              time={blog.createdAt}
+            />
+          ))
+        ) : (
+          <h1>You Havent Created a Post</h1>
+        )}
+      </div>
+    </Layout>
   );
 };
 

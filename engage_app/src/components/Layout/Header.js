@@ -62,8 +62,8 @@ const Header = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/contact" className="nav-link ">
-                  Contact
+                <NavLink to="/newsletter" className="nav-link ">
+                  Newsletter
                 </NavLink>
               </li>
               {!auth.user ? (
