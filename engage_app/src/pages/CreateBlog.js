@@ -5,7 +5,6 @@ import { Box, Button, InputLabel, TextField, Typography } from "@mui/material";
 import toast from "react-hot-toast";
 import { useAuth } from "../context/auth";
 import Layout from "../components/Layout/Layout";
-import { Label } from "@material-ui/icons";
 
 const REACT_APP_API = "http://localhost:8080";
 const CreateBlog = () => {
