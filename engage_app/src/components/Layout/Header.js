@@ -69,7 +69,7 @@ const Header = () => {
               {!auth.user ? (
                 <>
                   <li className="nav-item">
-                    <NavLink to="/register" className="nav-link">
+                    <NavLink to="/registerredirect" className="nav-link">
                       Register
                     </NavLink>
                   </li>

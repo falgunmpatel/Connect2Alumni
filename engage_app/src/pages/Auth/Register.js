@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Layout from "./../../components/Layout/Layout";
 import "./register.css";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 // import {FaFacebookSquare , FaTwitterSquare , FaGithubSquare } from 'react-icons/fa'
 // import {FcGoogle} from'react-icons/fc'
 import { toast } from "react-hot-toast";
@@ -180,7 +180,7 @@ const Register = () => {
                     </button>
                   </li>
                   <li className="nav-item" role="presentation">
-                    <p
+                    <button
                       to="/login"
                       className="nav-link"
                       id="profile-tab"
@@ -190,10 +190,10 @@ const Register = () => {
                       aria-controls="profile-tab-pane"
                       aria-selected="false"
                     >
-                      <Link to="/login" style={{ textDecoration: "none" }}>
+                      <NavLink to="/login" style={{ textDecoration: "none" }}>
                         Login
-                      </Link>
-                    </p>
+                      </NavLink>
+                    </button>
                   </li>
                 </ul>
 
@@ -279,7 +279,7 @@ const Register = () => {
             </div>
           </div> */}
                 </div>
-                <p className="mt-5 mb-3 text-muted">© Tech Troopers</p>
+                {/* <p className="mt-5 mb-3 text-muted">© Tech Troopers</p> */}
               </div>
             </div>
           </form>
