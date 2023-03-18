@@ -58,6 +58,7 @@ import ForgotPasssword from "./pages/Auth/ForgotPassword";
 import CreateBlog from "./pages/CreateBlog";
 import BlogDetails from "./pages/BlogDetails";
 import UserBlogs from "./pages/UserBlogs";
+// import JobPortal from "./pages/service/JobPortal";
 function App() {
   return (
     <>
@@ -74,6 +75,7 @@ function App() {
         {/* <Route path="/newsletter" element={<NewsletterSignup />} /> */}
         <Route path="/policy" element={<Policy />} />
         <Route path="*" element={<Pagenotfound />} />
+        {/* <Route path="/jobportal" element={<JobPortal />}  */}
       </Routes>
     </>
   );
