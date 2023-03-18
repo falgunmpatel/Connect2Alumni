@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema(
+const mentorSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -23,59 +23,59 @@ const userSchema = new mongoose.Schema(
     firstname: {
       type: String,
       required: true,
-      default: " ",
+      default: "",
     },
     lastname: {
       type: String,
       required: true,
-      default: " ",
+      default: "",
     },
     phone: {
       type: String,
       required: true,
-      default: " ",
+      default: "",
     },
     organization: {
       type: String,
       required: true,
-      default: " ",
+      default: "",
     },
     course: {
       type: String,
       required: true,
-      default: " ",
+      default: "",
     },
     course_specialization: {
       type: String,
       required: true,
-      default: " ",
+      default: "",
     },
     year_of_study: {
       type: String,
       required: true,
-      default: " ",
+      default: "",
     },
     graduation_year: {
       type: String,
       required: true,
-      default: " ",
+      default: "",
     },
     summary: {
       type: String,
       required: true,
-      default: " ",
+      default: "",
     },
-    // skills: {
-    //   type: String,
-    //   enum: {
-    //     values: ["java", "javascript", "html", "css"],
-    //     message: `{VALUE} is not supported`,
-    //   },
-    // },
+    skills: {
+      type: String,
+      enum: {
+        values: ["java", "javascript", "html", "css"],
+        message: `{VALUE} is not supported`,
+      },
+    },
 
     role: {
       type: Number,
-      default: 0,
+      default: 1,
     },
     blogs: [
       {
@@ -87,4 +87,4 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("users", userSchema);
+export default mongoose.model("mentors", mentorSchema);
