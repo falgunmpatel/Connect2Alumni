@@ -108,7 +108,6 @@ const CreateBlog = () => {
                 onChange={handleChange}
                 margin="normal"
                 variant="outlined"
-                required
               />
 
               <Button type="submit" color="primary" variant="contained">

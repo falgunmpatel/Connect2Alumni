@@ -2,7 +2,15 @@ import React from "react";
 import Layout from "../../components/Layout/Layout";
 import "./registerredirect.css";
 import { NavLink } from "react-router-dom";
+
 const Registerredirect = () => {
+  const handleClick = () => {
+    localStorage.setItem("access", 1);
+  };
+  const handleClick2 = () => {
+    localStorage.setItem("access", 0);
+  };
+
   return (
     <>
       <Layout>
@@ -27,7 +35,7 @@ const Registerredirect = () => {
             <div className="create_account-bottom">
               Don't have an account?
               <br />
-              <p>
+              <button type="submit" onClick={handleClick}>
                 <NavLink
                   to="/register"
                   className="btn-get-started"
@@ -35,7 +43,7 @@ const Registerredirect = () => {
                 >
                   Sign up
                 </NavLink>
-              </p>
+              </button>
             </div>
           </section>
           <section className="student">
@@ -59,7 +67,7 @@ const Registerredirect = () => {
             <div className="create_account-bottom">
               Don't have an account?
               <br />
-              <p>
+              <button type="submit" onClick={handleClick2}>
                 <NavLink
                   to="/register"
                   className="btn-get-started"
@@ -67,7 +75,7 @@ const Registerredirect = () => {
                 >
                   Sign up
                 </NavLink>
-              </p>
+              </button>
             </div>
           </section>
         </div>

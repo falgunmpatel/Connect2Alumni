@@ -82,7 +82,19 @@ export default function BlogCard({
         }
         subheader={<Typography level="body2">{time}</Typography>}
       />
-      <CardMedia component="img" height="300" image={image} alt="Post Image" />
+      {image == " " ? (
+        <></>
+      ) : (
+        <>
+          <CardMedia
+            component="img"
+            height="300"
+            image={image}
+            alt="Post Image"
+          />
+        </>
+      )}
+
       <CardContent>
         <Typography variant="h6" color="text.secondary">
           {title}
