@@ -155,12 +155,14 @@ img, svg {
     padding: 30px;
     border-radius: 5px;
     background: #fff;
-    transition: 0.5s;
+    /* transition: 0.5s; */
+    transition: transform 250ms;
     height: 100%;
 }
 
 .team .member:hover{
-    
+    cursor: pointer;
+    transform: translateY(-15px);
 }
 
 
