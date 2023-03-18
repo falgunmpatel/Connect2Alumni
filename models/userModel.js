@@ -65,6 +65,16 @@ const userSchema = new mongoose.Schema(
       required: true,
       default: " ",
     },
+    company: {
+      type: String,
+      required: true,
+      default: " ",
+    },
+    projects: {
+      type: String,
+      required: true,
+      default: " ",
+    },
     // skills: {
     //   type: String,
     //   enum: {

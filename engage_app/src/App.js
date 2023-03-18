@@ -58,6 +58,7 @@ import ForgotPasssword from "./pages/Auth/ForgotPassword";
 import CreateBlog from "./pages/CreateBlog";
 import BlogDetails from "./pages/BlogDetails";
 import UserBlogs from "./pages/UserBlogs";
+import Registerredirect from "./pages/Auth/Registerredirect";
 // import JobPortal from "./pages/service/JobPortal";
 function App() {
   return (
@@ -68,6 +69,7 @@ function App() {
         <Route path="/create-blog" element={<CreateBlog />} />
         <Route path="/all-blog" element={<SocialMedia />} />
         <Route path="/my-blogs" element={<UserBlogs />} />
+        <Route path="/registerredirect" element={<Registerredirect />} />
         <Route path="/blog-details/:id" element={<BlogDetails />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgotpassword" element={<ForgotPasssword />} />

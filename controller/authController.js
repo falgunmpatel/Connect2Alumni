@@ -106,6 +106,8 @@ export const loginController = async (req, res) => {
         graduation_year: user.graduation_year,
         skills: user.skills,
         summary: user.summary,
+        company: user.company,
+        projects: user.projects,
         role: user.role,
       },
       token,
@@ -175,6 +177,8 @@ export const updateProfileController = async (req, res) => {
       year_of_study,
       graduation_year,
       skills,
+      company,
+      projects,
       summary,
     } = req.body;
     const user = await userModel.findById(req.user._id);
@@ -194,6 +198,8 @@ export const updateProfileController = async (req, res) => {
         year_of_study: year_of_study || user.year_of_study,
         graduation_year: graduation_year || user.graduation_year,
         summary: summary || user.summary,
+        company: company || user.company,
+        projects: projects || user.projects,
         skills: skills || user.skills,
       },
       { new: true }

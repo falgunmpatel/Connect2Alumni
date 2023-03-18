@@ -37,6 +37,8 @@ const UserProfile = () => {
       graduation_year,
       skills,
       role,
+      company,
+      projects,
       summary,
     } = auth?.user ?? {};
     setName(name);
@@ -52,6 +54,8 @@ const UserProfile = () => {
     setYear_Of_Study(year_of_study);
     setGraduation_Year(graduation_year);
     setSkills(skills);
+    setCompany(company);
+    setProjects(projects);
     setSummary(summary);
   }, [auth?.user]);
   const [name, setName] = useState("");
@@ -67,7 +71,8 @@ const UserProfile = () => {
   const [year_of_study, setYear_Of_Study] = useState("");
   const [graduation_year, setGraduation_Year] = useState("");
   const [skills, setSkills] = useState("");
-
+  const [projects, setProjects] = useState("");
+  const [company, setCompany] = useState("");
   const [summary, setSummary] = useState("");
 
   //profile function
@@ -239,6 +244,37 @@ const UserProfile = () => {
                     required
                   ></textarea>
                 </div>
+                {!auth.user?.role ? (
+                  <></>
+                ) : (
+                  <>
+                    <div className="col-md-12">
+                      <label className="labels">Company</label>
+                      <input
+                        value={company}
+                        onChange={(e) => setCompany(e.target.value)}
+                        type="text"
+                        className="form-control"
+                        placeholder="Summary"
+                        required
+                      ></input>
+                    </div>
+                  </>
+                )}
+
+                <div className="col-md-12">
+                  <label className="labels">Projects</label>
+                  <textarea
+                    rows={5}
+                    value={projects}
+                    onChange={(e) => setProjects(e.target.value)}
+                    type="text"
+                    className="form-control"
+                    placeholder="Projects"
+                    required
+                  ></textarea>
+                </div>
+
                 {/* <div className="col-md-12">
                   <label className="labels">Skills</label>
                   <input

@@ -39,7 +39,7 @@ const HomePage = () => {
               </h2>
               <div className="d-flex justify-content-center justify-content-lg-start">
                 <NavLink
-                  to="/about"
+                  to="/registerredirect"
                   className="btn-get-started"
                   style={{ textDecoration: "none" }}
                 >
