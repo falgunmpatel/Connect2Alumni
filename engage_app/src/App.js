@@ -48,7 +48,7 @@
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import SocialMedia from "./pages/SocialMedia";
-import Contact from "./pages/Contact";
+// import NewsletterSignup from "./Newsletter/NewsletterSignup";
 import Policy from "./pages/Policy";
 import Pagenotfound from "./pages/Pagenotfound";
 import Register from "./pages/Auth/Register";
@@ -71,7 +71,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/forgotpassword" element={<ForgotPasssword />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/contact" element={<Contact />} />
+        {/* <Route path="/newsletter" element={<NewsletterSignup />} /> */}
         <Route path="/policy" element={<Policy />} />
         <Route path="*" element={<Pagenotfound />} />
       </Routes>

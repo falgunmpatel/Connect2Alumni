@@ -96,6 +96,13 @@ export const loginController = async (req, res) => {
         name: user.name,
         email: user.email,
         role: user.role,
+        firstname: user.firstname,
+        lastname: user.lastname,
+        phone: user.phone,
+        state: user.state,
+        postcode: user.postcode,
+        area: user.area,
+        country: user.country,
       },
       token,
     });
@@ -190,6 +197,32 @@ export const updateProfileController = async (req, res) => {
     res.status(400).send({
       success: false,
       message: "Error WHile Update profile",
+      error,
+    });
+  }
+};
+
+//GET user
+export const getUserByIdController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await userModel.findById(id);
+    if (!user) {
+      return res.status(404).send({
+        success: false,
+        message: "user not found",
+      });
+    }
+    return res.status(200).send({
+      success: true,
+      message: "fetch user",
+      user,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send({
+      success: false,
+      message: "error while getting single user",
       error,
     });
   }

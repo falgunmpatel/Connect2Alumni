@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import {
-  FaFacebookSquare,
-  FaTwitterSquare,
-  FaGithubSquare,
-} from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
+// import {
+//   FaFacebookSquare,
+//   FaTwitterSquare,
+//   FaGithubSquare,
+// } from "react-icons/fa";
+// import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import { useAuth } from "../../context/auth";
