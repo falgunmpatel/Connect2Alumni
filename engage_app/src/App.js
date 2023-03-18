@@ -48,7 +48,7 @@
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import SocialMedia from "./pages/SocialMedia";
-import Contact from "./pages/Contact";
+// import NewsletterSignup from "./Newsletter/NewsletterSignup";
 import Policy from "./pages/Policy";
 import Pagenotfound from "./pages/Pagenotfound";
 import Register from "./pages/Auth/Register";
@@ -58,6 +58,8 @@ import ForgotPasssword from "./pages/Auth/ForgotPassword";
 import CreateBlog from "./pages/CreateBlog";
 import BlogDetails from "./pages/BlogDetails";
 import UserBlogs from "./pages/UserBlogs";
+import Registerredirect from "./pages/Auth/Registerredirect";
+// import JobPortal from "./pages/service/JobPortal";
 function App() {
   return (
     <>
@@ -67,13 +69,15 @@ function App() {
         <Route path="/create-blog" element={<CreateBlog />} />
         <Route path="/all-blog" element={<SocialMedia />} />
         <Route path="/my-blogs" element={<UserBlogs />} />
+        <Route path="/registerredirect" element={<Registerredirect />} />
         <Route path="/blog-details/:id" element={<BlogDetails />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgotpassword" element={<ForgotPasssword />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/contact" element={<Contact />} />
+        {/* <Route path="/newsletter" element={<NewsletterSignup />} /> */}
         <Route path="/policy" element={<Policy />} />
         <Route path="*" element={<Pagenotfound />} />
+        {/* <Route path="/jobportal" element={<JobPortal />}  */}
       </Routes>
     </>
   );

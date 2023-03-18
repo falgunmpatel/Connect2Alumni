@@ -96,6 +96,19 @@ export const loginController = async (req, res) => {
         name: user.name,
         email: user.email,
         role: user.role,
+        firstname: user.firstname,
+        lastname: user.lastname,
+        phone: user.phone,
+        organization: user.organization,
+        course: user.course,
+        course_specialization: user.course_specialization,
+        year_of_study: user.year_of_study,
+        graduation_year: user.graduation_year,
+        skills: user.skills,
+        summary: user.summary,
+        company: user.company,
+        projects: user.projects,
+        role: user.role,
       },
       token,
     });
@@ -158,10 +171,15 @@ export const updateProfileController = async (req, res) => {
       firstname,
       lastname,
       phone,
-      postcode,
-      state,
-      area,
-      country,
+      organization,
+      course,
+      course_specialization,
+      year_of_study,
+      graduation_year,
+      skills,
+      company,
+      projects,
+      summary,
     } = req.body;
     const user = await userModel.findById(req.user._id);
     const updatedUser = await userModel.findByIdAndUpdate(
@@ -173,10 +191,16 @@ export const updateProfileController = async (req, res) => {
         //   address: address || user.address,
         firstname: firstname || user.firstname,
         lastname: lastname || user.lastname,
-        postcode: postcode || user.postcode,
-        state: state || user.state,
-        area: area || user.area,
-        country: country || user.country,
+        organization: organization || user.organization,
+        course: course || user.course,
+        course_specialization:
+          course_specialization || user.course_specialization,
+        year_of_study: year_of_study || user.year_of_study,
+        graduation_year: graduation_year || user.graduation_year,
+        summary: summary || user.summary,
+        company: company || user.company,
+        projects: projects || user.projects,
+        skills: skills || user.skills,
       },
       { new: true }
     );
@@ -190,6 +214,32 @@ export const updateProfileController = async (req, res) => {
     res.status(400).send({
       success: false,
       message: "Error WHile Update profile",
+      error,
+    });
+  }
+};
+
+//GET user
+export const getUserByIdController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await userModel.findById(id);
+    if (!user) {
+      return res.status(404).send({
+        success: false,
+        message: "user not found",
+      });
+    }
+    return res.status(200).send({
+      success: true,
+      message: "fetch user",
+      user,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send({
+      success: false,
+      message: "error while getting single user",
       error,
     });
   }

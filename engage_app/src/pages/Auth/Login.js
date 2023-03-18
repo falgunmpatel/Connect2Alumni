@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import {
-  FaFacebookSquare,
-  FaTwitterSquare,
-  FaGithubSquare,
-} from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
+// import {
+//   FaFacebookSquare,
+//   FaTwitterSquare,
+//   FaGithubSquare,
+// } from "react-icons/fa";
+// import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import { useAuth } from "../../context/auth";
@@ -167,7 +167,7 @@ const Login = () => {
                   role="tablist"
                 >
                   <li className="nav-item" role="presentation">
-                    <p
+                    <buttton
                       className="nav-link"
                       id="home-tab"
                       data-bs-toggle="tab"
@@ -177,10 +177,13 @@ const Login = () => {
                       aria-selected="false"
                     >
                       {" "}
-                      <Link to="/register" style={{ textDecoration: "none" }}>
+                      <NavLink
+                        to="/register"
+                        style={{ textDecoration: "none" }}
+                      >
                         Sign Up
-                      </Link>
-                    </p>
+                      </NavLink>
+                    </buttton>
                   </li>
                   <li className="nav-item" role="presentation">
                     <p
@@ -258,7 +261,9 @@ const Login = () => {
                         Login
                       </button>
                       <p className="text-center mt-3">
-                        <Link to="/forgotpassword">Forgot Password? </Link>
+                        <NavLink to="/forgotpassword">
+                          Forgot Password?{" "}
+                        </NavLink>
                       </p>
                     </div>
                   </div>

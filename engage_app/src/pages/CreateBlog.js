@@ -3,7 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Box, Button, InputLabel, TextField, Typography } from "@mui/material";
 import toast from "react-hot-toast";
-import { useAuth } from "../context/auth";
 import Layout from "../components/Layout/Layout";
 
 const REACT_APP_API = "http://localhost:8080";
@@ -13,6 +12,7 @@ const CreateBlog = () => {
   const [inputs, setInputs] = useState({
     title: "",
     description: "",
+    image: "",
   });
   // input change
   const handleChange = (e) => {
@@ -30,12 +30,14 @@ const CreateBlog = () => {
         {
           title: inputs.title,
           description: inputs.description,
+          image: inputs.image,
           user: id,
         }
       );
       if (data?.success) {
         toast.success("Blog Created");
         navigate("/my-blogs");
+        console.log(id);
       }
     } catch (error) {
       console.log(error);
@@ -93,6 +95,19 @@ const CreateBlog = () => {
                 className="mb-4"
                 rows={3}
                 multiline="true"
+                required
+              />
+              <InputLabel
+                sx={{ mb: 1, mt: 2, fontSize: "24px", fontWeight: "bold" }}
+              >
+                Image URL
+              </InputLabel>
+              <TextField
+                name="image"
+                value={inputs.image}
+                onChange={handleChange}
+                margin="normal"
+                variant="outlined"
                 required
               />
 

@@ -6,27 +6,29 @@ import { Box, Button, InputLabel, TextField, Typography } from "@mui/material";
 const BlogDetails = () => {
   const [blog, setBlog] = useState({});
   const id = useParams().id;
+  console.log(useParams().id);
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({});
-  // get blog details
-  const getBlogDetail = async () => {
-    try {
-      const { data } = await axios.get(`/api/v1/auth/get-blog/${id}`);
-      if (data?.success) {
-        setBlog(data?.blog);
-        setInputs({
-          title: data?.blog.title,
-          description: data?.blog.description,
-        });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   useEffect(() => {
+    const getBlogDetail = async () => {
+      try {
+        const { data } = await axios.get(`/api/v1/auth/get-blog/${id}`);
+        if (data?.success) {
+          setBlog(data?.blog);
+          setInputs({
+            title: data?.blog.title,
+            description: data?.blog.description,
+            image: data?.blog.image,
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     getBlogDetail();
-  }, [id]);
+  }, [id, setBlog, setInputs]);
 
   // input change
   const handleChange = (e) => {
@@ -42,7 +44,8 @@ const BlogDetails = () => {
       const { data } = await axios.put(`/api/v1/auth/update-blog/${id}`, {
         title: inputs.title,
         description: inputs.description,
-        user: id,
+        image: inputs.image,
+        // user: id,
       });
       if (data?.success) {
         toast.success("Blog Updated");
@@ -74,7 +77,7 @@ const BlogDetails = () => {
             padding={3}
             color="gray"
           >
-            Update A Pots
+            Update A Post
           </Typography>
           <InputLabel
             sx={{ mb: 1, mt: 2, fontSize: "24px", fontWeight: "bold" }}
@@ -97,6 +100,19 @@ const BlogDetails = () => {
           <TextField
             name="description"
             value={inputs.description}
+            onChange={handleChange}
+            margin="normal"
+            variant="outlined"
+            required
+          />
+          <InputLabel
+            sx={{ mb: 1, mt: 2, fontSize: "24px", fontWeight: "bold" }}
+          >
+            Image URL
+          </InputLabel>
+          <TextField
+            name="image"
+            value={inputs.image}
             onChange={handleChange}
             margin="normal"
             variant="outlined"

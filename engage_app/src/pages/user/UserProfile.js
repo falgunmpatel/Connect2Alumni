@@ -30,32 +30,50 @@ const UserProfile = () => {
       phone,
       firstname,
       lastname,
-      postcode,
-      state,
-      area,
-      country,
+      organization,
+      course,
+      course_specialization,
+      year_of_study,
+      graduation_year,
+      skills,
+      role,
+      company,
+      projects,
+      summary,
     } = auth?.user ?? {};
     setName(name);
     setEmail(email);
     setPassword(password);
     setPhone(phone);
+    setRole(role);
     setFirstname(firstname);
     setLastname(lastname);
-    setPostcode(postcode);
-    setState(state);
-    setArea(area);
-    setCountry(country);
+    setOrganization(organization);
+    setCourse(course);
+    setCourse_Specialization(course_specialization);
+    setYear_Of_Study(year_of_study);
+    setGraduation_Year(graduation_year);
+    setSkills(skills);
+    setCompany(company);
+    setProjects(projects);
+    setSummary(summary);
   }, [auth?.user]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [phone, setPhone] = useState("");
-  const [postcode, setPostcode] = useState("");
-  const [state, setState] = useState("");
-  const [area, setArea] = useState("");
-  const [country, setCountry] = useState("");
+  const [organization, setOrganization] = useState("");
+  const [course, setCourse] = useState("");
+  const [course_specialization, setCourse_Specialization] = useState("");
+  const [year_of_study, setYear_Of_Study] = useState("");
+  const [graduation_year, setGraduation_Year] = useState("");
+  const [skills, setSkills] = useState("");
+  const [projects, setProjects] = useState("");
+  const [company, setCompany] = useState("");
+  const [summary, setSummary] = useState("");
 
   //profile function
   const handleSubmit = async (e) => {
@@ -67,13 +85,17 @@ const UserProfile = () => {
           name,
           email,
           // password,
+          role,
           firstname,
           lastname,
           phone,
-          postcode,
-          state,
-          area,
-          country,
+          organization,
+          course,
+          course_specialization,
+          year_of_study,
+          graduation_year,
+          skills,
+          summary,
         }
       );
       if (data?.error) {
@@ -107,6 +129,9 @@ const UserProfile = () => {
                 />
                 <span className="font-weight-bold">{auth?.user?.name}</span>
                 <span className="text-black-50">{auth?.user?.email}</span>
+                <span className="text-black-50">
+                  {!auth.user?.role ? <>Student</> : <>Alumni</>}
+                </span>
                 <span> </span>
               </div>
             </div>
@@ -152,21 +177,21 @@ const UserProfile = () => {
                     />
                   </div>
                   <div className="col-md-12">
-                    <label className="labels">City</label>
+                    <label className="labels">Organization</label>
                     <input
-                      value={area}
-                      onChange={(e) => setArea(e.target.value)}
+                      value={organization}
+                      onChange={(e) => setOrganization(e.target.value)}
                       type="text"
                       className="form-control"
-                      placeholder="City"
+                      placeholder="Ogranization"
                       required
                     />
                   </div>
                   <div className="col-md-12">
-                    <label className="labels">Postcode</label>
+                    <label className="labels">Course</label>
                     <input
-                      value={postcode}
-                      onChange={(e) => setPostcode(e.target.value)}
+                      value={course}
+                      onChange={(e) => setCourse(e.target.value)}
                       type="text"
                       className="form-control"
                       placeholder="Postcode"
@@ -174,10 +199,10 @@ const UserProfile = () => {
                     />
                   </div>
                   <div className="col-md-12">
-                    <label className="labels">State</label>
+                    <label className="labels">Course Specialization</label>
                     <input
-                      value={state}
-                      onChange={(e) => setState(e.target.value)}
+                      value={course_specialization}
+                      onChange={(e) => setCourse_Specialization(e.target.value)}
                       type="text"
                       className="form-control"
                       placeholder="State"
@@ -187,16 +212,81 @@ const UserProfile = () => {
                 </div>
                 <div className="row mt-3">
                   <div className="col-md-6">
-                    <label className="labels">Country</label>
+                    <label className="labels">Year of Study</label>
                     <input
-                      value={country}
-                      onChange={(e) => setCountry(e.target.value)}
+                      value={year_of_study}
+                      onChange={(e) => setYear_Of_Study(e.target.value)}
                       type="text"
                       className="form-control"
                       placeholder="Country"
                     />
                   </div>
+                  <div className="col-md-6">
+                    <label className="labels">Graduation Year</label>
+                    <input
+                      value={graduation_year}
+                      onChange={(e) => setGraduation_Year(e.target.value)}
+                      type="text"
+                      className="form-control"
+                      placeholder="Graduation Year"
+                    />
+                  </div>
                 </div>
+                <div className="col-md-12">
+                  <label className="labels">Summary</label>
+                  <textarea
+                    rows={5}
+                    value={summary}
+                    onChange={(e) => setSummary(e.target.value)}
+                    type="text"
+                    className="form-control"
+                    placeholder="Summary"
+                    required
+                  ></textarea>
+                </div>
+                {!auth.user?.role ? (
+                  <></>
+                ) : (
+                  <>
+                    <div className="col-md-12">
+                      <label className="labels">Company</label>
+                      <input
+                        value={company}
+                        onChange={(e) => setCompany(e.target.value)}
+                        type="text"
+                        className="form-control"
+                        placeholder="Summary"
+                        required
+                      ></input>
+                    </div>
+                  </>
+                )}
+
+                <div className="col-md-12">
+                  <label className="labels">Projects</label>
+                  <textarea
+                    rows={5}
+                    value={projects}
+                    onChange={(e) => setProjects(e.target.value)}
+                    type="text"
+                    className="form-control"
+                    placeholder="Projects"
+                    required
+                  ></textarea>
+                </div>
+
+                {/* <div className="col-md-12">
+                  <label className="labels">Skills</label>
+                  <input
+                    value={skills}
+                    onChange={(e) => setSkills(e.target.value)}
+                    type="text"
+                    className="form-control"
+                    placeholder="State"
+                    required
+                  />
+                </div> */}
+
                 <div className="mt-5 text-center">
                   <button
                     className="btn btn-primary profile-button"
