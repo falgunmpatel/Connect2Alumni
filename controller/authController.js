@@ -2,10 +2,11 @@ import { hashPassword, comparePassword } from "../helpers/authHelper.js";
 import userModel from "../models/userModel.js";
 
 import JWT from "jsonwebtoken";
+import fs from "fs";
 
 export const registerController = async (req, res) => {
   try {
-    const { name, email, password, answer } = req.body;
+    const { name, email, password, answer, access } = req.body;
     // validation
     if (!name) {
       return res.send({ message: "Name is required" });
@@ -38,6 +39,7 @@ export const registerController = async (req, res) => {
       email,
       password: hashedPassword,
       answer,
+      access,
     }).save();
 
     res.status(201).send({
@@ -95,11 +97,11 @@ export const loginController = async (req, res) => {
         _id: user._id,
         name: user.name,
         email: user.email,
-        role: user.role,
+        access: user.access,
         firstname: user.firstname,
         lastname: user.lastname,
         phone: user.phone,
-        organization: user.organization,
+
         course: user.course,
         course_specialization: user.course_specialization,
         year_of_study: user.year_of_study,
@@ -108,7 +110,6 @@ export const loginController = async (req, res) => {
         summary: user.summary,
         company: user.company,
         projects: user.projects,
-        role: user.role,
       },
       token,
     });
@@ -166,12 +167,10 @@ export const updateProfileController = async (req, res) => {
     const {
       name,
       email,
-      //   password,
-      //   address,
       firstname,
       lastname,
       phone,
-      organization,
+
       course,
       course_specialization,
       year_of_study,
@@ -186,12 +185,10 @@ export const updateProfileController = async (req, res) => {
       req.user._id,
       {
         name: name || user.name,
-        //   password: hashedPassword || user.password,
         phone: phone || user.phone,
-        //   address: address || user.address,
         firstname: firstname || user.firstname,
         lastname: lastname || user.lastname,
-        organization: organization || user.organization,
+
         course: course || user.course,
         course_specialization:
           course_specialization || user.course_specialization,
@@ -204,6 +201,7 @@ export const updateProfileController = async (req, res) => {
       },
       { new: true }
     );
+
     res.status(200).send({
       success: true,
       message: "Profile Updated SUccessfully",

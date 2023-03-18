@@ -1,16 +1,3 @@
-// import React from 'react'
-// import Layout from '../../components/Layout/Layout'
-
-// const Dashboard = () => {
-//   return (
-//     <Layout>
-//         <h1>Dashboard</h1>
-//     </Layout>
-//   )
-// }
-
-// export default Dashboard
-
 import React, { useState, useEffect } from "react";
 import Layout from "../../components/Layout/Layout";
 import { useAuth } from "../../context/auth";
@@ -28,15 +15,14 @@ const UserProfile = () => {
       email,
       password,
       phone,
+      photo,
       firstname,
       lastname,
-      organization,
       course,
       course_specialization,
       year_of_study,
       graduation_year,
       skills,
-      role,
       company,
       projects,
       summary,
@@ -45,10 +31,9 @@ const UserProfile = () => {
     setEmail(email);
     setPassword(password);
     setPhone(phone);
-    setRole(role);
+    setPhoto(photo);
     setFirstname(firstname);
     setLastname(lastname);
-    setOrganization(organization);
     setCourse(course);
     setCourse_Specialization(course_specialization);
     setYear_Of_Study(year_of_study);
@@ -61,11 +46,10 @@ const UserProfile = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [phone, setPhone] = useState("");
-  const [organization, setOrganization] = useState("");
+  const [photo, setPhoto] = useState("");
   const [course, setCourse] = useState("");
   const [course_specialization, setCourse_Specialization] = useState("");
   const [year_of_study, setYear_Of_Study] = useState("");
@@ -85,19 +69,20 @@ const UserProfile = () => {
           name,
           email,
           // password,
-          role,
           firstname,
           lastname,
           phone,
-          organization,
           course,
           course_specialization,
           year_of_study,
           graduation_year,
           skills,
+          projects,
+          company,
           summary,
         }
       );
+
       if (data?.error) {
         toast.error(data?.error);
       } else {
@@ -121,16 +106,48 @@ const UserProfile = () => {
           <div className="row">
             <div className="col-md-3 border-right">
               <div className="d-flex flex-column align-items-center text-center p-3 py-5">
-                <img
-                  className="rounded-circle mt-5"
-                  width="150px"
-                  src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-                  alt="pi"
-                />
+                <div className="mb-3">
+                  {photo && (
+                    <div className="text-center">
+                      <div
+                        style={{
+                          overflow: "hidden",
+                          width: "180px",
+                          height: "180px",
+                          borderRadius: "50%",
+                        }}
+                      >
+                        <img
+                          src={URL.createObjectURL(photo)}
+                          alt="product_photo"
+                          className="img img-responsive"
+                          style={{
+                            position: "relative",
+                            top: "-20%",
+                            height: "auto",
+                            maxWidth: "100%",
+                          }}
+                        />
+                      </div>
+                    </div>
+                  )}
+                  <div className="mb-3 mt-3">
+                    <label className="btn btn-outline-secondary col-md-12">
+                      {"Upload Photo"}
+                      <input
+                        type="file"
+                        name="photo"
+                        accept="image/*"
+                        onChange={(e) => setPhoto(e.target.files[0])}
+                        hidden
+                      />
+                    </label>
+                  </div>
+                </div>
                 <span className="font-weight-bold">{auth?.user?.name}</span>
                 <span className="text-black-50">{auth?.user?.email}</span>
                 <span className="text-black-50">
-                  {!auth.user?.role ? <>Student</> : <>Alumni</>}
+                  {!auth.user?.access ? <>Student</> : <>Alumni</>}
                 </span>
                 <span> </span>
               </div>
@@ -176,28 +193,23 @@ const UserProfile = () => {
                       required
                     />
                   </div>
-                  <div className="col-md-12">
-                    <label className="labels">Organization</label>
-                    <input
-                      value={organization}
-                      onChange={(e) => setOrganization(e.target.value)}
-                      type="text"
-                      className="form-control"
-                      placeholder="Ogranization"
-                      required
-                    />
-                  </div>
-                  <div className="col-md-12">
-                    <label className="labels">Course</label>
-                    <input
-                      value={course}
-                      onChange={(e) => setCourse(e.target.value)}
-                      type="text"
-                      className="form-control"
-                      placeholder="Postcode"
-                      required
-                    />
-                  </div>
+                  {!auth.user?.access ? (
+                    <>
+                      <div className="col-md-12">
+                        <label className="labels">Course</label>
+                        <input
+                          value={course}
+                          onChange={(e) => setCourse(e.target.value)}
+                          type="text"
+                          className="form-control"
+                          placeholder="Postcode"
+                          required
+                        />
+                      </div>
+                    </>
+                  ) : (
+                    <></>
+                  )}
                   <div className="col-md-12">
                     <label className="labels">Course Specialization</label>
                     <input
@@ -211,16 +223,22 @@ const UserProfile = () => {
                   </div>
                 </div>
                 <div className="row mt-3">
-                  <div className="col-md-6">
-                    <label className="labels">Year of Study</label>
-                    <input
-                      value={year_of_study}
-                      onChange={(e) => setYear_Of_Study(e.target.value)}
-                      type="text"
-                      className="form-control"
-                      placeholder="Country"
-                    />
-                  </div>
+                  {!auth.user?.access ? (
+                    <>
+                      <div className="col-md-6">
+                        <label className="labels">Year of Study</label>
+                        <input
+                          value={year_of_study}
+                          onChange={(e) => setYear_Of_Study(e.target.value)}
+                          type="text"
+                          className="form-control"
+                          placeholder="Country"
+                        />
+                      </div>
+                    </>
+                  ) : (
+                    <></>
+                  )}
                   <div className="col-md-6">
                     <label className="labels">Graduation Year</label>
                     <input
@@ -244,7 +262,7 @@ const UserProfile = () => {
                     required
                   ></textarea>
                 </div>
-                {!auth.user?.role ? (
+                {!auth.user?.access ? (
                   <></>
                 ) : (
                   <>

@@ -19,12 +19,15 @@ const Register = () => {
   //form function
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const access = localStorage.getItem("access");
+
     try {
       const res = await axios.post(`${REACT_APP_API}/api/v1/auth/register`, {
         name,
         email,
         password,
         answer,
+        access,
       });
       if (res && res.data.success) {
         toast.success(res.data.message);

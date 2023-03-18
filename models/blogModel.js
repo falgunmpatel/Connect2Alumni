@@ -13,6 +13,7 @@ const blogSchema = new mongoose.Schema(
     image: {
       type: String,
       require: [true, "image is required"],
+      default: " ",
     },
     user: {
       type: mongoose.Types.ObjectId,

@@ -30,12 +30,11 @@ const userSchema = new mongoose.Schema(
       required: true,
       default: " ",
     },
-    phone: {
-      type: String,
-      required: true,
-      default: " ",
+    photo: {
+      data: Buffer,
+      contentType: String,
     },
-    organization: {
+    phone: {
       type: String,
       required: true,
       default: " ",
@@ -75,15 +74,7 @@ const userSchema = new mongoose.Schema(
       required: true,
       default: " ",
     },
-    // skills: {
-    //   type: String,
-    //   enum: {
-    //     values: ["java", "javascript", "html", "css"],
-    //     message: `{VALUE} is not supported`,
-    //   },
-    // },
-
-    role: {
+    access: {
       type: Number,
       default: 0,
     },
