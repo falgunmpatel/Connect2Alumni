@@ -1,8 +1,6 @@
-
-:root{
-    --bs-gutter-x: 1.5rem;
-    --bs-gutter-y: 0;
-
+:root {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
 }
 
 section {
@@ -112,7 +110,6 @@ svg {
 }
 
 .services .icon-box {
-
   box-shadow: 0px 0 25px 0 rgb(0 0 0 / 10%);
   padding: 50px 30px;
   /* transition: all ease-in-out 0.4s; */
@@ -124,17 +121,16 @@ svg {
   cursor: pointer;
   transform: translateY(-10px);
 
-    box-shadow: 0px 0 25px 0 rgb(0 0 0 / 10%);
-    padding: 50px 30px;
-    /* transition: all ease-in-out 0.4s; */
-    background: #fff;
-    transition: transform 250ms;
+  box-shadow: 0px 0 25px 0 rgb(0 0 0 / 10%);
+  padding: 50px 30px;
+  /* transition: all ease-in-out 0.4s; */
+  background: #fff;
+  transition: transform 250ms;
 }
 
-.services .icon-box:hover{
-    cursor: pointer;
-    transform: translateY(-10px);
-
+.services .icon-box:hover {
+  cursor: pointer;
+  transform: translateY(-10px);
 }
 
 .services .icon-box .icon {
@@ -155,7 +151,6 @@ svg {
 }
 
 .team .member {
-
   position: relative;
   box-shadow: 0px 2px 15px rgb(0 0 0 / 10%);
   padding: 30px;
@@ -171,23 +166,10 @@ svg {
   transform: translateY(-15px);
 }
 
-
-    position: relative;
-    box-shadow: 0px 2px 15px rgb(0 0 0 / 10%);
-    padding: 30px;
-    border-radius: 5px;
-    background: #fff;
-    /* transition: 0.5s; */
-    transition: transform 250ms;
-    height: 100%;
+.team .member:hover {
+  cursor: pointer;
+  transform: translateY(-15px);
 }
-
-.team .member:hover{
-    cursor: pointer;
-    transform: translateY(-15px);
-}
-
-
 
 .team .member .pic {
   overflow: hidden;
